@@ -1,6 +1,7 @@
 FROM ubuntu:18.04
 
-ENV NODEJS_VERSION v8.11.1
+ENV NODEJS_VERSION_8_1 v8.1.2
+ENV NODEJS_VERSION_8_11 v8.11.1
 
 # Install Nginx
 RUN \
@@ -14,10 +15,14 @@ RUN \
 VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx"]
 
 # Download ONOS dependencies
-RUN mkdir -p /var/www/html/dist/${NODEJS_VERSION} && \
-      cd /var/www/html/dist/${NODEJS_VERSION} && \
-      wget https://nodejs.org/dist/${NODEJS_VERSION}/node-${NODEJS_VERSION}-darwin-x64.tar.gz && \
-      wget https://nodejs.org/dist/${NODEJS_VERSION}/node-${NODEJS_VERSION}-linux-x64.tar.gz
+RUN mkdir -p /var/www/html/dist/${NODEJS_VERSION_8_11} && \
+      cd /var/www/html/dist/${NODEJS_VERSION_8_11} && \
+      wget https://nodejs.org/dist/${NODEJS_VERSION_8_11}/node-${NODEJS_VERSION_8_11}-darwin-x64.tar.gz && \
+      wget https://nodejs.org/dist/${NODEJS_VERSION_8_11}/node-${NODEJS_VERSION_8_11}-linux-x64.tar.gz
+
+RUN mkdir -p /var/www/html/dist/${NODEJS_VERSION_8_1} && \
+      wget https://nodejs.org/dist/${NODEJS_VERSION_8_1}/node-${NODEJS_VERSION_8_1}-darwin-x64.tar.gz && \
+      wget https://nodejs.org/dist/${NODEJS_VERSION_8_1}/node-${NODEJS_VERSION_8_1}-linux-x64.tar.gz
 
 # Define working directory.
 WORKDIR /etc/nginx

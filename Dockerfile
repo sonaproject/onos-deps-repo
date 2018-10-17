@@ -21,6 +21,7 @@ RUN mkdir -p /var/www/html/dist/${NODEJS_VERSION_8_11} && \
       wget https://nodejs.org/dist/${NODEJS_VERSION_8_11}/node-${NODEJS_VERSION_8_11}-linux-x64.tar.gz
 
 RUN mkdir -p /var/www/html/dist/${NODEJS_VERSION_8_1} && \
+      cd /var/www/html/dist/${NODEJS_VERSION_8_1} && \
       wget https://nodejs.org/dist/${NODEJS_VERSION_8_1}/node-${NODEJS_VERSION_8_1}-darwin-x64.tar.gz && \
       wget https://nodejs.org/dist/${NODEJS_VERSION_8_1}/node-${NODEJS_VERSION_8_1}-linux-x64.tar.gz
 
